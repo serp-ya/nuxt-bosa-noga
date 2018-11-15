@@ -19,6 +19,7 @@ import TopMenuItem from './TopMenuItem';
 import { mapState } from 'vuex';
 
 export default {
+  name: 'TopMenu',
   components: {
     TopMenuItem,
   },
@@ -31,6 +32,14 @@ export default {
 </script>
 
 <style>
+.header .top-menu__items {
+  height: 100%;
+  display: flex;
+  padding: 0 35px;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .header .top-menu {
   min-height: 49px;
   height: 1px;

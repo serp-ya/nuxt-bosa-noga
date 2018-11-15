@@ -8,6 +8,7 @@
 
 <script>
 export default {
+  name: 'TopMenuItem',
   props: {
     link: {
       type: String,
@@ -18,14 +19,6 @@ export default {
 </script>
 
 <style>
-.header .top-menu__items {
-  height: 100%;
-  display: flex;
-  padding: 0 35px;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .header .top-menu__item {
   list-style: none;
   flex: 1;
