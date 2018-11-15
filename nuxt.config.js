@@ -27,6 +27,13 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    '~static/css/normalize.css',
+    '~static/css/font-awesome.min.css',
+    '~static/css/style.css',
+    '~static/css/style-product-card.css',
+    '~static/css/style-order.css',
+    '~static/css/style-favorite.css',
+    '~static/css/style-catalogue.css',
   ],
 
   /*
@@ -56,16 +63,6 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-    extend(config, ctx) {
-      // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
-    }
+    extend(config, ctx) {}
   }
 }
