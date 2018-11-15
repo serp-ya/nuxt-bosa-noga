@@ -1,27 +1,9 @@
 <template>
   <div class="container">
     <header class="header">
-      <div class="top-menu">
-        <div class="wrapper">
-          <ul class="top-menu__items">
-            <li class="top-menu__item">
-              <a href="#">Возврат</a>
-            </li>
-            <li class="top-menu__item">
-              <a href="#">Доставка и оплата</a>
-            </li>
-            <li class="top-menu__item">
-              <a href="#">О магазине</a>
-            </li>
-            <li class="top-menu__item">
-              <a href="#">Контакты</a>
-            </li>
-            <li class="top-menu__item">
-              <a href="#">Новости</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+      
+      <TopMenu />
+      
       <div class="header-main">
         <div class="header-main__wrapper wrapper">
           <div class="header-main__phone">
@@ -478,3 +460,13 @@
     </footer>
   </div>
 </template>
+
+<script>
+import TopMenu from '~/components/Header/TopMenu/TopMenu';
+
+export default {
+  components: {
+    TopMenu,
+  }
+};
+</script>

@@ -61,32 +61,6 @@ li a:hover {
   background-repeat: no-repeat;
   background-position: center bottom;
 }
-.header .top-menu {
-  min-height: 49px;
-  height: 1px;
-  background: #A1B3BF;
-}
-.header .top-menu__items {
-  height: 100%;
-  display: flex;
-  padding: 0 35px;
-  justify-content: space-between;
-  align-items: center;
-}
-.header .top-menu__item {
-  list-style: none;
-  flex: 1;
-  text-align: center;
-}
-.header .top-menu__item a {
-  text-decoration: none;
-  font-size: 18px;
-  color: #333333;
-}
-.header .top-menu__item a:hover {
-  color: #DBE4E7;
-  text-decoration: underline;
-}
 .header .header-main {
   position: relative;
   display: flex;
