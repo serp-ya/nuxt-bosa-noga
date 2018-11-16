@@ -1,21 +1,36 @@
 <template>
-  <div class="header-main__hidden-panel hidden-panel">
+  <div
+    class="header-main__hidden-panel hidden-panel"
+    :class="panelClasses"
+  >
     <div class="wrapper">
-      <HeaderMainHiddenPanelProfile />
-      <HeaderMainHiddenPanelBasket />
+      <HiddenPanelProfile v-if="profileIsOpen" />
+      <HiddenPanelBasket v-if="basketIsOpen" />
     </div>
   </div>
 </template>
 
 <script>
-import HeaderMainHiddenPanelProfile from './HeaderMainHiddenPanelProfile';
-import HeaderMainHiddenPanelBasket from './HeaderMainHiddenPanelBasket';
+import HiddenPanelProfile from './HiddenPanel/HiddenPanelProfile';
+import HiddenPanelBasket from './HiddenPanel/HiddenPanelBasket';
+import { mapState } from 'vuex';
 
 export default {
   name: 'HeaderMainHiddenPanel',
   components: {
-    HeaderMainHiddenPanelProfile,
-    HeaderMainHiddenPanelBasket,
+    HiddenPanelProfile,
+    HiddenPanelBasket,
+  },
+  computed: {
+    ...mapState('headerDropdown', [
+      'profileIsOpen',
+      'basketIsOpen',
+    ]),
+    panelClasses() {
+      return {
+        'header-main__hidden-panel_visible': this.profileIsOpen || this.basketIsOpen,
+      };
+    },
   },
 };
 </script>

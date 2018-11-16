@@ -3,18 +3,26 @@
     <nuxt-link to="/">
       <h1>
         <img
-          src="img/header-logo.png"
+          :src="logoBlueLink"
           alt="logotype"
         >
       </h1>
     </nuxt-link>
-    <p>Обувь и аксессуары для всей семьи</p>
+    <p>{{ slogan }}</p>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'HeaderMainLogo',
+  computed: {
+    ...mapState([
+      'logoBlueLink',
+      'slogan',
+    ]),
+  }
 };
 </script>
 

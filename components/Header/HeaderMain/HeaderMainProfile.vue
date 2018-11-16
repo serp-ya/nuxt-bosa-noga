@@ -1,27 +1,66 @@
 <template>
   <div class="header-main__profile">
     <div class="header-main__pics">
-      <div class="header-main__pic header-main__pic_search" />
+      <div
+        class="header-main__pic header-main__pic_search"
+        :class="searchBtnClasses"
+        @click="toggleSearchBar"
+      />
       <div class="header-main__pic_border" />
-      <div class="header-main__pic header-main__pic_profile">
+      <div
+        class="header-main__pic header-main__pic_profile"
+        @click="toggleProfile"
+      >
         <div class="header-main__pic_profile_menu" />
       </div>
       <div class="header-main__pic_border" />
-      <div class="header-main__pic header-main__pic_basket">
+      <div
+        class="header-main__pic header-main__pic_basket"
+        @click="toggleBasket"
+      >
         <div class="header-main__pic_basket_full">1</div>
         <div class="header-main__pic_basket_menu" />
       </div>
     </div>
-    <form class="header-main__search">
+    <form
+      class="header-main__search"
+      :class="searchFormClasses"
+    >
       <input placeholder="Поиск">
-      <i class="fa fa-search" />
+      <i
+        class="fa fa-search"
+        @click="toggleSearchBar"
+      />
     </form>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex';
 export default {
   name: 'HeaderMainProfile',
+  computed: {
+    ...mapState('headerDropdown', [
+      'searchBarOpen'
+    ]),
+    searchBtnClasses() {
+      return {
+        'header-main__pic_search_is-hidden': this.searchBarOpen,
+      };
+    },
+    searchFormClasses() {
+      return {
+        'header-main__search_active': this.searchBarOpen,
+      };
+    },
+  },
+  methods: {
+    ...mapMutations('headerDropdown', [
+      'toggleSearchBar',
+      'toggleProfile',
+      'toggleBasket',
+    ]),
+  }
 };
 </script>
 

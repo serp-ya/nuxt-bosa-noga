@@ -6,147 +6,7 @@
       <HeaderMainProfile />
     </div>
 
-    <div class="header-main__hidden-panel hidden-panel">
-      <div class="wrapper">
-        
-        <div class="hidden-panel__profile">
-          <a href="#">Личный кабинет</a>
-          <a href="favorite.html">
-            <i
-              class="fa fa-heart-o"
-              aria-hidden="true"
-            />
-            Избранное
-          </a>
-          <a href="#">Выйти</a>
-        </div>
-
-        <div class="hidden-panel__basket basket-dropped">
-          <div class="basket-dropped__title">В вашей корзине:</div>
-          <div class="basket-dropped__product-list product-list">
-            <div class="product-list__item">
-              <a class="product-list__pic">
-                <img 
-                  src="img/product-list__pic_1.jpg"
-                  alt="product"
-                >
-              </a>
-              <a 
-                href="#"
-                class="product-list__product"
-              >
-                Ботинки женские, Baldinini
-              </a>
-              <div class="product-list__fill" />
-              <div class="product-list__price">12 360
-                <i
-                  class="fa fa-rub"
-                  aria-hidden="true"
-                />
-              </div>
-              <div class="product-list__delete">
-                <i
-                  class="fa fa-times"
-                  aria-hidden="true"
-                />
-              </div>
-            </div>
-
-            <div class="product-list__item">
-              <a class="product-list__pic">
-                <img 
-                  src="img/product-list__pic_1.jpg"
-                  alt="product"
-                >
-              </a>
-              <a
-                href="#"
-                class="product-list__product"
-              >
-                Ботинки женские, Baldinini
-              </a>
-              <div class="product-list__fill" />
-              <div class="product-list__price">
-                12 360
-                <i
-                  class="fa fa-rub"
-                  aria-hidden="true"
-                />
-              </div>
-              <div class="product-list__delete">
-                <i
-                  class="fa fa-times"
-                  aria-hidden="true"
-                />
-              </div>
-            </div>
-            <div class="product-list__item">
-              <a class="product-list__pic">
-                <img
-                  src="img/product-list__pic_1.jpg"
-                  alt="product"
-                >
-              </a>
-              <a
-                href="#"
-                class="product-list__product"
-              >
-                Ботинки женские, Baldinini
-              </a>
-              <div class="product-list__fill" />
-              <div class="product-list__price">
-                12 360
-                <i
-                  class="fa fa-rub"
-                  aria-hidden="true"
-                />
-              </div>
-              <div class="product-list__delete">
-                <i
-                  class="fa fa-times"
-                  aria-hidden="true"
-                />
-              </div>
-            </div>
-            <div class="product-list__item">
-              <a class="product-list__pic">
-                <img
-                  src="img/product-list__pic_1.jpg"
-                  alt="product"
-                >
-              </a>
-              <a
-                href="#"
-                class="product-list__product"
-              >
-                Ботинки женские, Baldinini
-              </a>
-              <div class="product-list__fill" />
-              <div class="product-list__price">
-                12 360
-                <i
-                  class="fa fa-rub"
-                  aria-hidden="true"
-                />
-              </div>
-              <div class="product-list__delete">
-                <i
-                  class="fa fa-times"
-                  aria-hidden="true"
-                />
-              </div>
-            </div>
-          </div>
-
-          <a
-            class="basket-dropped__order-button"
-            href="order.html"
-          >
-            Оформить заказ
-          </a>
-        </div>
-      </div>
-    </div>
+    <HeaderMainHiddenPanel />
   </div>
 </template>
 
@@ -154,6 +14,7 @@
 import HeaderMainPhone from './HeaderMainPhone';
 import HeaderMainLogo from './HeaderMainLogo';
 import HeaderMainProfile from './HeaderMainProfile';
+import HeaderMainHiddenPanel from './HeaderMainHiddenPanel';
 
 export default {
   name: 'HeaderMain',
@@ -161,6 +22,7 @@ export default {
     HeaderMainPhone,
     HeaderMainLogo,
     HeaderMainProfile,
+    HeaderMainHiddenPanel,
   },
 };
 </script>
