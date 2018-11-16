@@ -4,8 +4,13 @@
     :class="panelClasses"
   >
     <div class="wrapper">
-      <HiddenPanelProfile v-if="profileIsOpen" />
-      <HiddenPanelBasket v-if="basketIsOpen" />
+      <keep-alive>
+        <component 
+          :is="profileIsOpen 
+            ? 'HiddenPanelProfile' 
+            : 'HiddenPanelBasket'"
+        ></component>
+      </keep-alive>
     </div>
   </div>
 </template>
