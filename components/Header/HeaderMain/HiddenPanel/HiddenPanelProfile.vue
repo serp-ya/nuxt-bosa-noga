@@ -1,20 +1,17 @@
 <template>
-  <div class="hidden-panel__profile">
-    <a href="#">Личный кабинет</a>
-    <a href="favorite.html">
-      <i
-        class="fa fa-heart-o"
-        aria-hidden="true"
-      />
+  <div class="hidden-panel__profile hidden-panel__profile_visible">
+    <nuxt-link to="/">Личный кабинет</nuxt-link>
+    <nuxt-link to="/favorite">
+      <i class="fa fa-heart-o"/>
       Избранное
-    </a>
-    <a href="#">Выйти</a>
+    </nuxt-link>
+    <nuxt-link to="/">Выйти</nuxt-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HeaderMainHiddenPanelProfile',
+  name: 'HiddenPanelProfile',
 };
 </script>
 

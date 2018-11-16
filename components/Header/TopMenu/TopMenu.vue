@@ -24,7 +24,7 @@ export default {
     TopMenuItem,
   },
   computed: {
-    ...mapState('topMenu', [
+    ...mapState('header/topMenu', [
       'links',
     ]),
   },

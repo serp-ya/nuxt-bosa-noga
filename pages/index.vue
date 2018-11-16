@@ -204,10 +204,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-      
-    };
-  },
+  name: 'HomePage',
 }
 </script>
