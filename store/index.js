@@ -1,16 +1,21 @@
 import Vuex from 'vuex';
-import header from './modules/header'
+import state from './state';
+import getters from './getters';
+import mutations from './mutations';
+import actions from './actions';
+
+import header from './modules/header';
+import cart from './modules/cart';
+import products from './modules/products';
 
 export default () => new Vuex.Store({
-  state: {
-    phone: '+74957903503',
-    email: 'office@bosanoga.ru',
-    siteName: 'BosaNoga',
-    openHours: 'Ежедневно с 09-00 до 21-00',
-    logoBlueLink: 'img/header-logo.png',
-    slogan: 'Обувь и аксессуары для всей семьи',
-  },
+  state,
+  getters,
+  mutations,
+  actions,
   modules: {
     header,
+    cart,
+    products,
   },
 });

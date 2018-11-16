@@ -10,4 +10,11 @@ export default {
     state.profileIsOpen = false;
     state.basketIsOpen = !state.basketIsOpen;
   },
+  setOpenCatId(state, { catId }) {
+    if (state.openCatId === catId) {
+      state.openCatId = null;
+    } else {
+      state.openCatId = catId;
+    }
+  },
 };

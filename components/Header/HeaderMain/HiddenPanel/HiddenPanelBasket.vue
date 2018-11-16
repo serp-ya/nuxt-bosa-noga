@@ -31,7 +31,7 @@ export default {
     HiddenPanelProductListItem,
   },
   computed: {
-    ...mapState('header/cart', {
+    ...mapState('cart', {
       cartItems: 'items',
     }),
   }

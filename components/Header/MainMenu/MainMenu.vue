@@ -1,39 +1,32 @@
 <template>
   <nav class="main-menu">
     <div class="wrapper">
-      <ul class="main-menu__items">
-        <li class="main-menu__item main-menu__item_sales">
-          <a href="#">Акции</a>
-        </li>
-        <li class="main-menu__item main-menu__item_women">
-          <a href="#">Женская обувь</a>
-        </li>
-        <li class="main-menu__item main-menu__item_men">
-          <a href="#">Мужская обувь</a>
-        </li>
-        <li class="main-menu__item main-menu__item_kids">
-          <a href="#">Детская обувь</a>
-        </li>
-        <li class="main-menu__item main-menu__item_accessories">
-          <a href="#">Аксессуары</a>
-        </li>
-        <li class="main-menu__item main-menu__item_home">
-          <a href="#">Для дома</a>
-        </li>
-        <li class="main-menu__item main-menu__item_brands">
-          <a href="#">Бренды</a>
-        </li>
-        <li class="main-menu__item main-menu__item_new">
-          <a href="#">Новинки</a>
-        </li>
+      <ul class="main-menu__items" v-if="categories.length">
+        <MainMenuItem 
+          v-for="category in categories"
+          :key="category.id"
+          :id="category.id"
+          :title="category.title"
+        />
       </ul>
     </div>
   </nav>
 </template>
 
 <script>
+import MainMenuItem from './MainMenuItem';
+import { mapState } from 'vuex';
+
 export default {
   name: 'MainMenu',
+  components: {
+    MainMenuItem,
+  },
+  computed: {
+    ...mapState('products', [
+      'categories',
+    ]),
+  },
 };
 </script>
 
