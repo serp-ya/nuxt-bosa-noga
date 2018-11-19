@@ -5,4 +5,7 @@ export default {
   initFilters({ commit }, { filtersList }) {
     commit('initFilters', filtersList);
   },
+  initFeatured({ commit }, { featuredItems }) {
+    commit('initFeatured', { featuredItems });
+  },
 };

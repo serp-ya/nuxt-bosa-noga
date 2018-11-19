@@ -5,4 +5,7 @@ export default {
   initFilters(state, { filtersList }) {
     state.filters = filtersList;
   },
+  initFeatured(state, { featuredItems }) {
+    state.featured = featuredItems;
+  }
 };

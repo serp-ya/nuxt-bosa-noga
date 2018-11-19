@@ -5,4 +5,7 @@ export default {
   checkFiltersIsEmpty(state) {
     return state.filters.length === 0;
   },
+  checkFeaturedIsEmpty(state) {
+    return state.featured.length === 0;
+  },
 };

@@ -158,6 +158,14 @@ export default {
     WideSlider,
     WideSliderImageSlide,
   },
+  async fetch({ store, app }) {
+    const featuredIsEmpty = store.getters['products/checkFeaturedIsEmpty'];
+    
+    if (featuredIsEmpty) {
+      const featuredItems = await app.$axios.$get('featured.json');
+      store.dispatch('products/initFeatured', { featuredItems });
+    }
+  },
   computed: {
     ...mapState('mainSlider', [
       'slides',
