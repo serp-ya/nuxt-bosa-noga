@@ -7,6 +7,7 @@ import actions from './actions';
 import header from './modules/header';
 import cart from './modules/cart';
 import products from './modules/products';
+import mainSlider from './modules/mainSlider';
 
 export default () => new Vuex.Store({
   state,
@@ -17,5 +18,6 @@ export default () => new Vuex.Store({
     header,
     cart,
     products,
+    mainSlider,
   },
 });

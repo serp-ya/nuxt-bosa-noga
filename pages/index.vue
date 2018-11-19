@@ -1,68 +1,13 @@
 <template>
   <div>
-    <section class="slider">
-      <div class="wrapper">
-        <div class="slider__pictures">
-          <a
-            class="slider__image"
-            href="#"
-          >
-            <img
-              src="img/slider.jpg"
-              alt="slide picture"
-            >
-          </a>
-          <a
-            class="slider__image"
-            href="#"
-          >
-            <img
-              src="img/slider180deg.jpeg"
-              alt="slide picture"
-            >
-          </a>
-          <a
-            class="slider__image"
-            href="#"
-          >
-            <img
-              src="img/slider.jpg"
-              alt="slide picture"
-            >
-          </a>
-          <a
-            class="slider__image"
-            href="#"
-          >
-            <img
-              src="img/slider180deg.jpeg"
-              alt="slide picture"
-            >
-          </a>
-          <div class="arrow slider__arrow slider__arrow_left" />
-          <div class="arrow slider__arrow slider__arrow_right" />
-          <div class="slider__circles">
-            <button
-              class="slider__circle"
-              value="0"
-            />
-            <button
-              class="slider__circle"
-              value="1"
-            />
-            <button
-              class="slider__circle"
-              value="2"
-            />
-            <button
-              class="slider__circle"
-              value="3"
-            />
-          </div>
-          <h2 class="h2">К весне готовы!</h2>
-        </div>
-      </div>
-    </section>
+    <WideSlider :delay="delay.number">
+      <WideSliderImageSlide
+        v-for="(slide, i) in slides"
+        :key="i"
+        :imageSrc="slide.imageSrc"
+        :imageLink="slide.imageLink"
+      />
+    </WideSlider>
 
     <section class="new-deals wave-bottom">
       <h2 class="h2">Новинки</h2>
@@ -203,7 +148,21 @@
 </template>
 
 <script>
+import WideSlider from '~/components/WideSlider/WideSlider';
+import WideSliderImageSlide from '~/components/WideSlider/WideSliderImageSlide';
+import { mapState } from 'vuex';
+
 export default {
   name: 'HomePage',
+  components: {
+    WideSlider,
+    WideSliderImageSlide,
+  },
+  computed: {
+    ...mapState('mainSlider', [
+      'slides',
+      'delay',
+    ]),
+  },
 }
 </script>
