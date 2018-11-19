@@ -17,4 +17,7 @@ export default {
       state.openCatId = catId;
     }
   },
+  clearOpenCatId(state) {
+    state.openCatId = null;
+  },
 };

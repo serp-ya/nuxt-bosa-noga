@@ -21,6 +21,7 @@
       />
       <DroppedMenuList
         title="Бренды:"
+        listType="three-columns"
         filterType="brand"
         :filterItems="filters['brand']"
       />
@@ -56,7 +57,7 @@ export default {
 <style>
 .dropped-menu {
   display: none;
-  height: 295px;
+  height: 440px;
   margin-bottom: 24px;
   padding: 32px 0 60px;
   background: #EEEEEE;

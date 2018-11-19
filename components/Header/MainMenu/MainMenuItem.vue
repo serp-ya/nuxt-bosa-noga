@@ -45,11 +45,6 @@ export default {
 </script>
 
 <style>
-.header .main-menu {
-  min-height: 58px;
-  height: 1px;
-}
-
 .header .main-menu__items {
   height: 100%;
   display: flex;

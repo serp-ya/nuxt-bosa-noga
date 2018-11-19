@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 
 export default {
   name: 'DroppedMenuListItem',
@@ -28,9 +28,13 @@ export default {
     ]),
   },
   methods: {
+    ...mapMutations('header/dropdown', [
+      'clearOpenCatId'
+    ]),
     onClick() {
       const route = `/products?categoryId=${this.openCatId}&${this.filterType}=${this.title}`;
       this.$router.push(route);
+      this.clearOpenCatId();
     }
   },
 };

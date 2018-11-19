@@ -1,5 +1,8 @@
 <template>
-  <div class="dropped-menu__lists">
+  <div
+    class="dropped-menu__lists"
+    :class="listClasses"
+  >
     <h3 class="dropped-menu__list-title">
       {{ title }}
     </h3>
@@ -24,6 +27,10 @@ export default {
       type: String,
       isRequired: true,
     },
+    listType: {
+      type: String,
+      isRequired: false,
+    },
     filterType: {
       type: String,
       isRequired: true,
@@ -36,6 +43,13 @@ export default {
   components: {
     DroppedMenuListItem,
   },
+  computed: {
+    listClasses() {
+      return {
+        'dropped-menu__lists_three-coloumns': this.listType === 'three-columns',
+      };
+    },
+  }
 };
 </script>
 
