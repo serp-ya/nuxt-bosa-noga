@@ -1,4 +1,4 @@
-export default (value, currencySign = '$') => {
+export default (value, currencySign = '$', currencySignPosition = 'left') => {
   if (value === undefined) {
     return '';
   }
@@ -11,5 +11,11 @@ export default (value, currencySign = '$') => {
       valueArrReversed.splice(i, 0, '.');
     }
   }
-  return currencySign + valueArrReversed.reverse().join('');
+
+  const price = valueArrReversed.reverse().join('');
+
+  if (currencySignPosition === 'rigth') {
+    return price + currencySign;
+  }
+  return currencySign + price;
 };

@@ -153,32 +153,6 @@ li a:hover {
   justify-content: space-between;
   align-items: center;
 }
-.new-deals__menu-item {
-  padding-bottom: 10px;
-  list-style: none;
-  text-align: center;
-  text-transform: uppercase;
-}
-.new-deals__menu-item a {
-  text-decoration: none;
-  font-size: 18px;
-  color: #D4D4D4;
-}
-.new-deals__menu-item a:hover {
-  color: #333333;
-  cursor: pointer;
-  text-decoration: underline;
-}
-.new-deals__menu-item_active {
-  background-image: linear-gradient(90deg, #ff65a5 0%, #ff8076 100%);
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  background-size: 100% 4px;
-}
-.new-deals__menu-item_active a {
-  font-weight: bold;
-  color: #333333;
-}
 .new-deals__slider {
   position: relative;
   display: flex;

@@ -9,55 +9,10 @@
       />
     </WideSlider>
 
-    <section class="new-deals wave-bottom">
-      <h2 class="h2">Новинки</h2>
-      <div class="new-deals__menu">
-        <ul class="new-deals__menu-items">
-          <li class="new-deals__menu-item new-deals__menu-item_active">
-            <a href="#">Женская обувь</a>
-          </li>
-          <li class="new-deals__menu-item">
-            <a href="#">Мужская обувь</a>
-          </li>
-          <li class="new-deals__menu-item">
-            <a href="#">Детская обувь</a>
-          </li>
-          <li class="new-deals__menu-item">
-            <a href="#">аксессуары</a>
-          </li>
-          <li class="new-deals__menu-item">
-            <a href="#">для дома</a>
-          </li>
-        </ul>
-      </div>
-      <div class="new-deals__slider">
-        <div class="new-deals__arrow new-deals__arrow_left arrow" />
-        <div class="new-deals__product new-deals__product_first">
-          <a href="#" />
-        </div>
-
-        <div class="new-deals__product new-deals__product_active">
-          <a href="catalogue.html" />
-          <div class="new-deals__product_favorite" />
-        </div>
-        <div class="new-deals__product new-deals__product_last">
-          <a href="#" />
-        </div>
-        <div class="new-deals__arrow new-deals__arrow_right arrow" />
-      </div>
-      <div class="new-deals__product-info">
-        <a
-          href="product-card-desktop.html"
-          class="h3"
-        >
-          Босоножки женские
-        </a>
-        <p>Производитель:
-          <span>Damlax</span>
-        </p>
-        <h3 class="h3">5 950 ₽</h3>
-      </div>
-    </section>
+    <NewDeals
+      :categories="categories"
+      :products="featured"
+    />
 
     <section class="sales-and-news wave-bottom">
       <h2 class="h2">акции и новости</h2>
@@ -150,6 +105,7 @@
 <script>
 import WideSlider from '~/components/WideSlider/WideSlider';
 import WideSliderImageSlide from '~/components/WideSlider/WideSliderImageSlide';
+import NewDeals from '~/components/NewDeals/NewDeals';
 import { mapState } from 'vuex';
 
 export default {
@@ -157,19 +113,28 @@ export default {
   components: {
     WideSlider,
     WideSliderImageSlide,
+    NewDeals,
   },
-  async fetch({ store, app }) {
-    const featuredIsEmpty = store.getters['products/checkFeaturedIsEmpty'];
-    
-    if (featuredIsEmpty) {
-      const featuredItems = await app.$axios.$get('featured.json');
-      store.dispatch('products/initFeatured', { featuredItems });
+  async fetch({ store, app, error }) {
+    try {
+      const featuredIsEmpty = store.getters['products/checkFeaturedIsEmpty'];
+
+      if (featuredIsEmpty) {
+        const featuredItems = await app.$axios.$get('featured.json');
+        store.dispatch('products/initFeatured', { featuredItems });
+      }
+    } catch (e) {
+      error(e);
     }
   },
   computed: {
     ...mapState('mainSlider', [
       'slides',
       'delay',
+    ]),
+    ...mapState('products', [
+      'categories',
+      'featured',
     ]),
   },
 }
