@@ -1,4 +1,9 @@
-export default (value, currencySign = '$', currencySignPosition = 'left') => {
+export default (value, options) => {
+  const { 
+    currencySign = '$', 
+    currencySignPosition = 'left',
+    delimiter = '.',
+  } = options;
   if (value === undefined) {
     return '';
   }
@@ -8,7 +13,7 @@ export default (value, currencySign = '$', currencySignPosition = 'left') => {
 
   for (let i = charsCount; i > 0; i -= 1) {
     if ((i % 3) === 0 && i !== charsCount) {
-      valueArrReversed.splice(i, 0, '.');
+      valueArrReversed.splice(i, 0, delimiter);
     }
   }
 

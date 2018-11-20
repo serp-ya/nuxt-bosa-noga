@@ -11,8 +11,7 @@
     </nuxt-link>
     <div class="product-list__fill" />
     <div class="product-list__price">
-      {{ price | currencyFormat }}
-      <i class="fa fa-rub" />
+      {{ price | currencyFormat(currencyOptions) }}
     </div>
     <div class="product-list__delete">
       <i class="fa fa-times" />
@@ -29,6 +28,15 @@ export default {
     imageLink: { type: String, isRequired: true },
     price: { type: Number, isRequired: true },
   },
+  data() {
+    return {
+      currencyOptions: {
+        currencySign: '₽',
+        currencySignPosition: 'rigth',
+        delimiter: ' ',
+      }
+    };
+  }
 };
 </script>
 
