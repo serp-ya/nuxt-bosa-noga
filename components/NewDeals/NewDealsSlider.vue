@@ -6,7 +6,7 @@
     />
 
     <NewDealsSliderItem
-      v-for="(prod, i) in slicedProducts"
+      v-for="(prod, i) in productsToShow"
       :key="prod.id"
       :productId="prod.id"
       :productLink="`/product/${prod.id}`"
@@ -47,6 +47,8 @@ export default {
     return {
       fromIndex: 0,
       toIndex: this.showQuantity,
+      activeProductIndex: Math.ceil(this.showQuantity / 2) - 1,
+      products: [...this.productsList],
     };
   },
   created() {
@@ -54,31 +56,32 @@ export default {
       this.pullProductDataCallback(this.activeProductInfo);
     }
   },
-  //TODO: прекратил обновляться слайдер
   updated() {
     if (this.pullProductDataCallback) {
       this.pullProductDataCallback(this.activeProductInfo);
     }
   },
   computed: {
-    activeProductIndex() {
-      return Math.ceil(this.showQuantity / 2) - 1;
-    },
-    slicedProducts() {
-      return this.productsList.slice(this.fromIndex, this.toIndex);
+    productsToShow() {
+      return this.products.slice(this.fromIndex, this.toIndex);
     },
     activeProductInfo() {
-      return this.slicedProducts[this.activeProductIndex];
+      return this.productsToShow[this.activeProductIndex];
+    },
+  },
+  watch: {
+    productsList(newList, oldList) {
+      this.products = [...newList];
     },
   },
   methods: {
     turnSlide(forward) {
       if (!forward) {
-        const lastProduct = this.productsList.pop();
-        this.productsList.unshift(lastProduct);
+        const lastProduct = this.products.pop();
+        this.products = [lastProduct, ...this.products];
       } else {
-        const firstProduct = this.productsList.shift();
-        this.productsList.push(firstProduct);
+        const firstProduct = this.products.shift();
+        this.products = [...this.products, firstProduct];
       }
     },
   },

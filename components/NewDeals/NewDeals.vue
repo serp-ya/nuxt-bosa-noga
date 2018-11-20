@@ -63,7 +63,9 @@ export default {
       if (this.activeCategoryId === null) {
         return this.products;
       }
-      return this.products.filter(item => item.categoryId === this.activeCategoryId);
+      return this.products.filter(
+        item => item.categoryId === this.activeCategoryId
+      );
     },
   },
   methods: {
