@@ -26,6 +26,7 @@ a:hover {
 /*Общее*/
 
 .product-catalogue {
+  display: flex;
   width: 1440px;
   margin: 0 auto;
 }
@@ -606,7 +607,9 @@ li.active {
   height: auto;
   margin-left: 120px;
   vertical-align: top;
-  float: left;
+}
+
+.sidebar__body {
   border-radius: 15px;
   box-shadow: 3px 3px 15px #D4E4E6;
 }
