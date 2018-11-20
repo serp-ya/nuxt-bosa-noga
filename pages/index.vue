@@ -107,7 +107,7 @@ import WideSlider from '~/components/WideSlider/WideSlider';
 import WideSliderImageSlide from '~/components/WideSlider/WideSliderImageSlide';
 import NewDeals from '~/components/NewDeals/NewDeals';
 import { mapState } from 'vuex';
-import preloadImages from '~/services/preloadImages';
+// import preloadImages from '~/services/preloadImages';
 
 export default {
   name: 'HomePage',
@@ -126,21 +126,6 @@ export default {
       }
     } catch (e) {
       error(e);
-    }
-  },
-  created() {
-    if (process.client) {
-      const featuredImages = this.featured.reduce(
-        (res, product) => {
-          const { images } = product;
-          if (Array.isArray(images) && images.length > 0) {
-            return [...res, ...images];
-          }
-          return res;
-        }, 
-        []
-      );
-      preloadImages(featuredImages);
     }
   },
   computed: {

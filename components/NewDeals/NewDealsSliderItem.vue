@@ -19,6 +19,7 @@
 
 <script>
 import { favoritesStorage } from '~/services/LocalStorage';
+import cacheImages from '~/services/cacheImages';
 
 export default {
   name: 'NewDealsSliderItem',
@@ -71,6 +72,11 @@ export default {
       this.favoritesIdsArray = result;
     },
   },
+  created() {
+    if (process.client) {
+      cacheImages(this.imageLink);
+    }
+  }
 }
 </script>
 

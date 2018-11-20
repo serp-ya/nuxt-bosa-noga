@@ -2,6 +2,10 @@ export default function preloadImages(array) {
   if (!window.cachedImages) {
     window.cachedImages = [];
   }
+
+  if (!Array.isArray(array)) {
+    array = [array];
+  }
   
   const imagesList = window.cachedImages;
 
