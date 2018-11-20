@@ -17,10 +17,6 @@ export default {
     ...mapState('products', [
       'items',
     ]),
-  }
+  },
 };
 </script>
-
-<style>
-  
-</style>

@@ -63,7 +63,7 @@ export default {
   },
   data() {
     return {
-      pageLimit: 15,
+      pageLimit: 5,
     };
   },
   computed: {
