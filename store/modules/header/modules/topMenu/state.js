@@ -1,4 +1,4 @@
-export default {
+export default () => ({
   links: [
     { title: 'Возврат', link: '/' },
     { title: 'Доставка и оплата', link: '/' },
@@ -6,4 +6,4 @@ export default {
     { title: 'Контакты', link: '/' },
     { title: 'Новости', link: '/' },
   ],
-};
+});

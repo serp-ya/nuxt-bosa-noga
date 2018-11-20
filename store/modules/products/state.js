@@ -1,6 +1,7 @@
-export default {
+export default () => ({
   categories: [],
   filters: [],
   items: [],
+  loadedItemsByCategoryId: [],
   featured: [],
-};
+});

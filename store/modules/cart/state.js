@@ -1,4 +1,4 @@
-export default {
+export default () => ({
   items: [
     {
       id: 1,
@@ -19,4 +19,4 @@ export default {
       price: 12360,
     },
   ]
-};
+});
