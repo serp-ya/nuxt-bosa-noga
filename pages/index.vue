@@ -107,7 +107,6 @@ import WideSlider from '~/components/WideSlider/WideSlider';
 import WideSliderImageSlide from '~/components/WideSlider/WideSliderImageSlide';
 import NewDeals from '~/components/NewDeals/NewDeals';
 import { mapState } from 'vuex';
-// import preloadImages from '~/services/preloadImages';
 
 export default {
   name: 'HomePage',

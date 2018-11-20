@@ -7,5 +7,13 @@ export default {
   },
   initFeatured(state, { featuredItems }) {
     state.featured = featuredItems;
-  }
+  },
+  loadCategory(state, { categoryData }) {
+    const { id, items } = categoryData;
+    state.items = [...state.items, ...items];
+
+    if (id || id === 0) {
+      state.loadedItemsByCategoryId.push(id);
+    }
+  },
 };

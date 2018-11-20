@@ -32,7 +32,7 @@ export default {
       'clearOpenCatId'
     ]),
     onClick() {
-      const route = `/products?categoryId=${this.openCatId}&${this.filterType}=${this.title}`;
+      const route = `/catalog/${this.openCatId}?${this.filterType}=${this.title}`;
       this.$router.push(route);
       this.clearOpenCatId();
     }

@@ -8,4 +8,7 @@ export default {
   initFeatured({ commit }, { featuredItems }) {
     commit('initFeatured', { featuredItems });
   },
+  loadCategory({ commit }, { categoryData }) {
+    commit('loadCategory', { categoryData });
+  },
 };
