@@ -153,32 +153,17 @@
 
     </main>
 
-    <section class="product-catalogue__overlooked-slider">
-      <h3>Вы смотрели:</h3>
-      <div class="overlooked-slider">
-        <div class="overlooked-slider__arrow overlooked-slider__arrow_left arrow"></div>
-        <div class="overlooked-slider__item overlooked-slider__item-1">
-          <a href="product-card-desktop.html"></a>
-        </div>
-        <div class="overlooked-slider__item overlooked-slider__item-2">
-          <a href="product-card-desktop.html"></a>
-        </div>
-        <div class="overlooked-slider__item overlooked-slider__item-3">
-          <a href="product-card-desktop.html"></a>
-        </div>
-        <div class="overlooked-slider__item overlooked-slider__item-4">
-          <a href="product-card-desktop.html"></a>
-        </div>
-        <div class="overlooked-slider__item overlooked-slider__item-5">
-          <a href="product-card-desktop.html"></a>
-        </div>
-        <div class="overlooked-slider__arrow overlooked-slider__arrow_right arrow"></div>
-      </div>
-    </section>
+    <ViewedProducts
+      v-if="viewedItems.length > 0"
+      :viewedProductsList="viewedItems"
+    />
   </div>
 </template>
 
 <script>
+import ViewedProducts from '~/components/ViewedProducts/ViewedProducts';
+import { mapState } from 'vuex';
+
 export default {
   name: 'CatalogTemplatePage',
   async fetch({ store, app, params, error }) {
@@ -200,6 +185,14 @@ export default {
       error({ statusCode: 500, message: 'Internal server error' });
     }
   },
+  components: {
+    ViewedProducts,
+  },
+  computed: {
+    ...mapState('products', [
+      'viewedItems'
+    ]),
+  }
 };
 </script>
 

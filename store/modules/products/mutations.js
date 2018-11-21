@@ -29,4 +29,16 @@ export default {
   loadProduct(state, { productData }) {
     state.itemsFull = [...state.itemsFull, productData];
   },
+  addToViewed(state, { productData }) {
+    const { viewedItems } = state;
+    const itemExist = viewedItems.find(item => item.id === productData.id);
+
+    if (itemExist) {
+      return;
+    } else if (viewedItems.length >= 10) {
+      viewedItems.shift();
+    }
+    
+    viewedItems.push(productData);
+  },
 };

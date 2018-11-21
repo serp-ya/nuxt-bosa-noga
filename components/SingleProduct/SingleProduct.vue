@@ -86,9 +86,19 @@
               </a>
             </li>
           </ul>
-          <a href="#" class="in-favourites-wrapper">
-            <div class="favourite" href="#"></div>
-            <p class="in-favourites">В избранное</p>
+          <a
+            class="in-favourites-wrapper"
+            @click="toggleFavorite"
+          >
+            <div 
+            class="favourite"
+            :style="favoriteStyle"
+            />
+            <p
+              class="in-favourites"
+            >
+              В избранное
+            </p>
           </a>
           <div class="basket-item__quantity">
             <div
@@ -105,16 +115,23 @@
               +
             </div>
           </div>
-          <div class="price">{{ countedPrice | currencyFormat({ currencyOptions }) }}</div>
-          <button class="in-basket in-basket-click">В корзину</button>
+          <div class="price">{{ countedPrice | currencyFormat(currencyOptions) }}</div>
+
+          <button 
+            class="in-basket in-basket-click"
+            :class="{'in-basket_disabled': !inStock}"
+            :disabled="!inStock"
+          >В корзину</button>
         </div>
-        
       </section>
     </section>
   </main>
 </template>
 
 <script>
+import { favoritesStorage } from '~/services/LocalStorage';
+import cacheImages from '~/services/cacheImages';
+
 export default {
   name: 'SingleProduct',
   props: {
@@ -159,7 +176,7 @@ export default {
       isRequired: true,
     },
     sku: {
-      type: Number,
+      type: String,
       isRequired: true,
     },
   },
@@ -168,6 +185,7 @@ export default {
       count: 1,
       selectedSizeIndex: 0,
       selectedImageIndex: 0,
+      isFavorite: !!favoritesStorage.find(this.id),
       currencyOptions: {
         currencySign: '₽',
         currencySignPosition: 'rigth',
@@ -185,6 +203,13 @@ export default {
     selectedImage() {
       return this.images[this.selectedImageIndex];
     },
+    favoriteStyle() {
+      if (this.isFavorite) {
+        return {
+          'background-image': 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAcCAYAAACdz7SqAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAG3SURBVHgBxZbNUcJAFMf/b8nNCyVgBUIHWIFQgVABIETGE8nJGQGHDoQO6ADsIB2IR28c9ETY9bEgH0Egi7D+ZiA7m7z9zX6+JURQZS8J56IEQg4KaV1JCCApwHTiU+dhtCemwDGpRfUQUvUgp8NoDG0Eu60SB3lcSuJ3xoD0qVXvxI4hjDBVPj3fdxGVqlq7wQ16iIdHLdc/JmYpVXdPBQh6gRlD/mVhgpJ5atf7c6nbfFubi/MxG+qJk0noXhIVYIckRPgh2H4Dq1BW8FymYROiK2FlLtdhn8A/IPSKsksgIOUrrKLeuaeiC5tILA6HKh8OZGFBKYyo7V7OF5JSPmyw8Kwd+M0BTM9SEzg9UtPNzIqrLROGRe7+GOdiEuZ/ikupTrQKZxpmuZH8Kfqah7nLj1ucCkVdateK61XbJ1LolPk/wEmEs1vDZyVavSWlTmXM85vXAX8WhtfU8bbWCe2MKT+mkHAGR+3fpXD7ErdXerT4gPCg1FgcQzjjYGrTDXBDMeY4iCOMJV2JnQxn/f6OT3oIv2IJdXswhPexx4/GqkZfvj0YYCzV4morB1IlLrLQHcKQbygRxVklR3BoAAAAAElFTkSuQmCC)',
+        };
+      }
+    },
   },
   methods: {
     changeCount(diff) {
@@ -201,7 +226,17 @@ export default {
         return;
       }
       this.selectedImageIndex = index;
+    },
+    toggleFavorite() {
+      const result = favoritesStorage.toggleId(this.id);
+      const isFavorite = !!favoritesStorage.find(this.id);
+      this.isFavorite = isFavorite;
+    },
+  },
+  created() {
+    if (process.client) {
+      cacheImages(this.images);
     }
-  }
+  },
 };
 </script>

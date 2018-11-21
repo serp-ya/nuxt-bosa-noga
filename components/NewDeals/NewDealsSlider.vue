@@ -51,15 +51,10 @@ export default {
       products: [...this.productsList],
     };
   },
-  created() {
-    if (this.pullProductDataCallback) {
-      this.pullProductDataCallback(this.activeProductInfo);
-    }
-  },
-  updated() {
-    if (this.pullProductDataCallback) {
-      this.pullProductDataCallback(this.activeProductInfo);
-    }
+  watch: {
+    productsList(newList, oldList) {
+      this.products = [...newList];
+    },
   },
   computed: {
     productsToShow() {
@@ -67,11 +62,6 @@ export default {
     },
     activeProductInfo() {
       return this.productsToShow[this.activeProductIndex];
-    },
-  },
-  watch: {
-    productsList(newList, oldList) {
-      this.products = [...newList];
     },
   },
   methods: {
@@ -84,6 +74,16 @@ export default {
         this.products = [...this.products, firstProduct];
       }
     },
+  },
+  created() {
+    if (this.pullProductDataCallback) {
+      this.pullProductDataCallback(this.activeProductInfo);
+    }
+  },
+  updated() {
+    if (this.pullProductDataCallback) {
+      this.pullProductDataCallback(this.activeProductInfo);
+    }
   },
 };
 </script>

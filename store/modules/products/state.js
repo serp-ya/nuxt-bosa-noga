@@ -3,6 +3,7 @@ export default () => ({
   filters: [],
   items: [],
   itemsFull: [],
+  viewedItems: [],
   loadedItemsByCategoryId: [],
   featured: [],
 });

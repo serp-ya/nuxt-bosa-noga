@@ -1,27 +1,35 @@
 <template>
-  <SingleProduct
-    :id="productData.id"
-    :title="productData.title"
-    :brand="productData.brand"
-    :color="productData.color"
-    :material="productData.material"
-    :season="productData.season"
-    :reason="productData.reason"
-    :sizes="productData.sizes"
-    :images="productData.images"
-    :price="productData.price"
-    :sku="productData.sku"
-  />
+  <div>
+    <SingleProduct
+      :id="productData.id"
+      :title="productData.title"
+      :brand="productData.brand"
+      :color="productData.color"
+      :material="productData.material"
+      :season="productData.season"
+      :reason="productData.reason"
+      :sizes="productData.sizes"
+      :images="productData.images"
+      :price="productData.price"
+      :sku="productData.sku"
+    />
+    <ViewedProducts
+      v-if="viewedItems.length > 0"
+      :viewedProductsList="viewedItems"
+    />
+</div>
 </template>
 
 <script>
 import SingleProduct from '~/components/SingleProduct/SingleProduct';
-import { mapState } from 'vuex';
+import ViewedProducts from '~/components/ViewedProducts/ViewedProducts';
+import { mapState, mapMutations } from 'vuex';
 
 export default {
   name: 'ProductPage',
   components: {
     SingleProduct,
+    ViewedProducts,
   },
   async fetch({ store, app, params, redirect, error }) {
     try {
@@ -50,12 +58,21 @@ export default {
   },
   computed: {
     ...mapState('products', [
-      'itemsFull'
+      'itemsFull',
+      'viewedItems',
     ]),
     productData() {
       const currentProductId = Number(this.$route.params.id);
       return this.itemsFull.find(product => product.id === currentProductId);
     },
-  }
+  },
+  methods: {
+    ...mapMutations('products', [
+      'addToViewed',
+    ]),
+  },
+  created() {
+    this.addToViewed({ productData: this.productData });
+  },
 };
 </script>
