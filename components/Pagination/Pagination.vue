@@ -59,7 +59,6 @@ export default {
         }
         const lastItem = result[result.length - 1].page + 1;
         result.push({ page: lastItem, title: '...'});
-        result.push(lastPage);
 
       } else if (activePage - 3 < maxPagesCount) {
         result.push({ page: activePage - 2, title: '...'});
@@ -69,7 +68,6 @@ export default {
         }
         const lastItem = result[result.length - 1].page;
         result.push({ page: lastItem.page + 1, title: '...'});
-        result.push(lastPage);
 
       } else {
         const startFrom = pagesCount - (maxPagesCount - 2);
@@ -77,8 +75,8 @@ export default {
         for (let i = startFrom + 1; i < pagesCount; i++) {
           result.push({ page: i, title: i });
         }
-        result.push(lastPage);
       }
+      result.push(lastPage);
       return result;
     },
     activePage() {

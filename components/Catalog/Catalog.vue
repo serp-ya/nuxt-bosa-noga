@@ -5,15 +5,6 @@
       <div class="product-catalogue__section-title">
         <h2 class="section-name">{{ categoryName }}</h2><span class="amount"> {{ productsCount }} товар(ов)</span>
       </div>
-
-      <div class="product-catalogue__sort-by">
-        <p class="sort-by">Сортировать</p>
-        <select name="" id="sorting">
-          <option value="">по популярности</option>
-          <option value="">по размеру</option>
-          <option value="">по производителю</option>
-        </select>
-      </div>
     </section>
     <!-- Список товаров каталога -->
     <section class="product-catalogue__item-list">
@@ -63,7 +54,7 @@ export default {
   },
   data() {
     return {
-      pageLimit: 5,
+      pageLimit: 15,
     };
   },
   computed: {
