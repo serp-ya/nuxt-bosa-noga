@@ -34,7 +34,7 @@ export default {
         currencySign: '₽',
         currencySignPosition: 'rigth',
         delimiter: ' ',
-      }
+      },
     };
   }
 };

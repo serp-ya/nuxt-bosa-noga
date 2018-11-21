@@ -11,4 +11,7 @@ export default {
   loadCategory({ commit }, { categoryData }) {
     commit('loadCategory', { categoryData });
   },
+  loadProduct({ commit }, { productData }) {
+    commit('loadProduct', { productData });
+  },
 };

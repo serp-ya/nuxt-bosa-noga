@@ -180,7 +180,7 @@
 
 <script>
 export default {
-  name: 'CatalogTemplatePage',  
+  name: 'CatalogTemplatePage',
   async fetch({ store, app, params, error }) {
     try {
       const { id } = params;
@@ -197,7 +197,7 @@ export default {
       }
     } catch (e) {
       console.log('catalog fetch error');
-      error(e);
+      error({ statusCode: 500, message: 'Internal server error' });
     }
   },
 };

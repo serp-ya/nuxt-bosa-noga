@@ -10,10 +10,23 @@ export default {
   },
   loadCategory(state, { categoryData }) {
     const { id, items } = categoryData;
-    state.items = [...state.items, ...items];
+    const existItemsIds = state.items.map(item => item.id);
+    const newItems = items.reduce((res, item) => {
+      if (!existItemsIds.includes(item.id)) {
+        res.push(item);
+      }
+      return res;
+    }, []);
+    
+    if (newItems.length > 0) {
+      state.items = [...state.items, ...newItems];
+    }
 
     if (id || id === 0) {
       state.loadedItemsByCategoryId.push(id);
     }
+  },
+  loadProduct(state, { productData }) {
+    state.itemsFull = [...state.itemsFull, productData];
   },
 };
