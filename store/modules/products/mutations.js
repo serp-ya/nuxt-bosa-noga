@@ -27,6 +27,15 @@ export default {
     }
   },
   loadProduct(state, { productData }) {
+    const products = state.itemsFull;
+    const productIsLoaded = products.find(
+      product => product.id === +productData.id
+    );
+
+    if (productIsLoaded) {
+      return;
+    }
+
     state.itemsFull = [...state.itemsFull, productData];
   },
   addToViewed(state, { productData }) {
