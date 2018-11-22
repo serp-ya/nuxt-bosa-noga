@@ -34,25 +34,13 @@ export default {
   async fetch({ store, app, params, redirect, error }) {
     try {
       const { id } = params;
-      const products = store.state.products.itemsFull;
-      const productIsLoaded = products.find(
-        product => product.id === +id
-      );
+      const result = await store.dispatch('products/fetchProduct', { productId: id });
 
-      if (!productIsLoaded) {
-        const url = `products.json?orderBy="id"&equalTo=${id}`;
-        const productData = await app.$axios.$get(url);
-        const productKey = Object.keys(productData)[0];
-        const productIsEmpty = typeof productKey === 'undefined';
-  
-        if (productIsEmpty) {
-          return error({ statusCode: 404, message: '404 - product not found' });
-        }
-
-        store.dispatch('products/loadProduct', { productData: productData[productKey] });
+      if (typeof result === 'object' && result.statusCode) {
+        error(result);
       }
     } catch (e) {
-      console.log('catalog fetch error');
+      console.log('Single page fetch error');
       error({ statusCode: 500, message: 'Internal server error' });
     }
   },
