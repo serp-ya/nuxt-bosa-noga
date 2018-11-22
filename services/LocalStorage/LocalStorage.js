@@ -10,7 +10,7 @@ class LocalStorage {
 
     const storage = localStorage[this.path];
     if (!storage) {
-      return null;
+      return {};
     }
     return JSON.parse(storage);
   }

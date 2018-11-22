@@ -10,7 +10,7 @@ class FavoritesStorage extends LocalStorage {
     const newId = Number(id);
 
     if (newId !== 0 && !newId) {
-      return console.error(`Can't write value of ${newId}`);
+      throw new Error(`Can't write value of ${newId}`);
     }
 
     if (Array.isArray(store)) {
