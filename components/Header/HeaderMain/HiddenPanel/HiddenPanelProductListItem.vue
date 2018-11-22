@@ -1,17 +1,15 @@
 <template>
   <div class="product-list__item">
-    <span class="product-list__pic">
-      <img 
-        :src="imageLink" 
-        :alt="title"
-      >
-    </span>
+    <span 
+      class="product-list__pic"
+      :style="{background: `url(${imageLink}) center center / cover no-repeat`}"
+    />
     <nuxt-link :to="'/products/' + id" class="product-list__product">
       {{ title }}
     </nuxt-link>
     <div class="product-list__fill" />
     <div class="product-list__price">
-      {{ price | currencyFormat(currencyOptions) }}
+      {{ price * count | currencyFormat(currencyOptions) }}
     </div>
     <div class="product-list__delete">
       <i class="fa fa-times" />
@@ -26,6 +24,7 @@ export default {
     id: { type: Number, isRequired: true, },
     title: { type: String, isRequired: true },
     imageLink: { type: String, isRequired: true },
+    count: { type: Number, isRequired: true },
     price: { type: Number, isRequired: true },
   },
   data() {

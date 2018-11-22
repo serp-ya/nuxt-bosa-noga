@@ -3,13 +3,18 @@
     <div class="basket-dropped__title">В вашей корзине:</div>
     <div class="basket-dropped__product-list product-list">
       <HiddenPanelProductListItem 
-        v-for="item in cartItems"
+        v-for="item in itemsToShow"
+        v-if="itemsToShow.length > 0"
         :key="item.id"
         :id="item.id"
         :title="item.title"
-        :imageLink="item.imageLink"
+        :imageLink="item.images[0]"
+        :count="item.count"
         :price="item.price"
       />
+      <p v-else>
+        нет товаров
+      </p>
     </div>
 
     <nuxt-link
@@ -34,6 +39,39 @@ export default {
     ...mapState('cart', {
       cartItems: 'items',
     }),
+    ...mapState('products', [
+      'itemsFull'
+    ]),
+    itemsToShow() {
+      const cartItemsIds = this.cartItems.reduce((res, item) => {
+        const id = item.id;
+
+        if (!res.includes(id)) {
+          res.push(id);
+        }
+        return res;
+      }, []);
+      const cartProducts = cartItemsIds.reduce((res, id) => {
+        const searchableProduct = this.itemsFull.find(item => item.id === id);
+
+        if (typeof searchableProduct !== 'undefined') {
+          res.push(searchableProduct);
+        }
+        return res;
+      }, []);
+      const itemsToShow = cartProducts.map(product => {
+        product.count = this.cartItems.reduce((res, item) => {
+          if (product.id === item.id) {
+            res += item.count;
+          }
+
+          return res;
+        }, 0);
+        return product;
+      });
+
+      return itemsToShow;
+    },
   }
 };
 </script>
